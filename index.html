@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tandoor Food Analytics Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="steampunk-theme">
+
+  <header class="header-banner">
+    <h1>⚙️ TANDOOR FOOD ANALYTICS</h1>
+    <p class="tagline">Essential Data... No, Really. We Count Bubbles, Layers, and Dreams.</p>
+  </header>
+
+  <div class="launcher-container">
+    <h2>Midnight Workshop Modules</h2>
+    <p>Select a dish to inspect its geometry and soul:</p>
+
+    <div class="button-grid">
+      <button class="launch-btn chapati-theme" onclick="openModal('chapatiModal')">Chapati Symmetry</button>
+      <button class="launch-btn paratha-theme" onclick="openModal('parathaModal')">Paratha Layers</button>
+      <button class="launch-btn appam-theme" onclick="openModal('appamModal')">Appam Bubbles</button>
+      <button class="launch-btn dosa-theme" onclick="openModal('dosaModal')">Dosa Geometry</button>
+    </div>
+  </div>
+
+  <!-- Chapati Modal -->
+  <div id="chapatiModal" class="modal">
+    <div class="modal-content layout-chapati">
+      <span class="close-btn" onclick="closeModal('chapatiModal')">&times;</span>
+      <h2>Chapati Symmetry & Diameter Inspector</h2>
+      <div class="split-view">
+        <div class="canvas-box">
+          <canvas id="chapatiCanvas" width="400" height="400"></canvas>
+          <input type="file" accept="image/*" onchange="processImage(event, 'chapatiCanvas', analyzeChapati)">
+        </div>
+        <div class="metrics-box">
+          <h3>Calculations</h3>
+          <p><strong>Diameter:</strong> <span id="chapatiDiameter">--</span> cm</p>
+          <p><strong>Symmetry Score:</strong> <span id="chapatiSymmetry">--</span> %</p>
+          <div class="analysis-box">
+            <h4>Final Analysis</h4>
+            <p id="chapatiAnalysis">Upload an image to compute circular perfection.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paratha Modal -->
+  <div id="parathaModal" class="modal">
+    <div class="modal-content layout-paratha">
+      <span class="close-btn" onclick="closeModal('parathaModal')">&times;</span>
+      <h2>Paratha Layer Inspector</h2>
+      <div class="topdown-view">
+        <input type="file" accept="image/*" onchange="processImage(event, 'parathaCanvas', analyzeParatha)">
+        <canvas id="parathaCanvas" width="500" height="300"></canvas>
+        <div class="metric-card">
+          <h4>Detected Layers</h4>
+          <span id="parathaLayers">--</span>
+        </div>
+        <div class="analysis-box">
+          <h4>Final Analysis</h4>
+          <p id="parathaAnalysis">Upload an image to reveal flaky lamination secrets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appam Modal -->
+  <div id="appamModal" class="modal">
+    <div class="modal-content layout-appam">
+      <span class="close-btn" onclick="closeModal('appamModal')">&times;</span>
+      <h2>Appam Porosity Inspector</h2>
+      <div class="grid-view">
+        <div class="left-panel">
+          <input type="file" accept="image/*" onchange="processImage(event, 'appamCanvas', analyzeAppam)">
+          <div class="analysis-box">
+            <h4>Final Analysis</h4>
+            <p id="appamAnalysis">Upload an image to evaluate bubble density and soul depth.</p>
+          </div>
+        </div>
+        <div class="right-panel">
+          <canvas id="appamCanvas" width="400" height="400"></canvas>
+          <div class="stats">
+            <p><strong>Hole Count:</strong> <span id="appamHoles">--</span></p>
+            <p><strong>Hole Density:</strong> <span id="appamDensity">--</span> holes/cm²</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dosa Modal -->
+  <div id="dosaModal" class="modal">
+    <div class="modal-content layout-dosa">
+      <span class="close-btn" onclick="closeModal('dosaModal')">&times;</span>
+      <h2>Dosa Geometry Inspector</h2>
+      <div class="hud-view">
+        <canvas id="dosaCanvas" width="450" height="350"></canvas>
+        <div class="hud-panel">
+          <input type="file" accept="image/*" onchange="processImage(event, 'dosaCanvas', analyzeDosa)">
+          <ul>
+            <li><strong>Radius (r):</strong> <span id="dosaRadius">--</span> cm</li>
+            <li><strong>Diameter (d):</strong> <span id="dosaDiameter">--</span> cm</li>
+            <li><strong>Area (πr²):</strong> <span id="dosaArea">--</span> cm²</li>
+            <li><strong>Perimeter (2πr):</strong> <span id="dosaPerimeter">--</span> cm</li>
+          </ul>
+          <div class="analysis-box">
+            <h4>Final Analysis</h4>
+            <p id="dosaAnalysis">Upload an image to calculate crisp geometry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-note">
+    <p>Seriously... we count bubbles. And layers. And circles. Send coffee.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
